@@ -9,7 +9,7 @@ app.use(morgan('dev'));
 app.get('/', (req, res) => {
   res.send(layOut(content));
 });
-const PORT = 1337 ;
+const PORT = 1337;
 
 app.listen(PORT, () => {
   console.log(`App listening in port ${PORT}`);
