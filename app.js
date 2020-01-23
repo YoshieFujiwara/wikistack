@@ -4,7 +4,7 @@ const app = express();
 const layOut = require('./views/layout.js');
 //const content = require('./views/layout.js')
 const { db } = require('./models');
-
+const models = require('./models');
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'))
 
@@ -13,14 +13,25 @@ then(() => {
   console.log('connected to the database');
 })
 
+
 app.get('/', (req, res) => {
   res.send(layOut());
 });
+const init = async () => {
+  await models.User.sync();
+  await models.Page.sync();
+  models.db.sync({force: true});
 
-const PORT = 1337;
+  const PORT = 1337;
+  app.listen(PORT, () => {
+    console.log(`App listening in port ${PORT}`);
+  });
+};
+init();
+// const PORT = 1337;
 
-app.listen(PORT, () => {
-  console.log(`App listening in port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`App listening in port ${PORT}`);
+// });
 
 // <link href="/stylesheets/style.css" rel="stylesheet">
