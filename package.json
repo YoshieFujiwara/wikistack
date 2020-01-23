@@ -1,18 +1,21 @@
 {
   "name": "wikistack",
   "version": "1.0.0",
-  "description": "wikistack",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon ./index.js"
+    "start": "nodemon ../app.js"
   },
-  "author": "Yoshie Fujiwara",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "express-static": "^1.2.6",
     "html-template-tag": "^3.2.0",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "pg": "^7.17.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
