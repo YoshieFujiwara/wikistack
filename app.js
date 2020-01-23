@@ -5,14 +5,30 @@ const layOut = require('./views/layout.js');
 //const content = require('./views/layout.js')
 const { db } = require('./models');
 const models = require('./models');
+const wikiRouter = require('./models/Routes/wiki')
+const userRouter = require('./models/Routes/user')
+
+
+
+
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'))
+
+//app.use(wikiRouter);
+//app.use(userRouter);
 
 db.authenticate().
 then(() => {
   console.log('connected to the database');
 })
 
+app.get('/wiki', (req, res)=>{
+  res.send(wikiRouter)
+})
+
+app.get('/user', (req, res)=>{
+  res.send(userRouter)
+})
 
 app.get('/', (req, res) => {
   res.send(layOut());
